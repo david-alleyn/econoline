@@ -9,11 +9,11 @@ import javafx.scene.layout.GridPane;
 import javafx.fxml.FXMLLoader;
 
 
-public class Main extends Application {
+public class WeaponNameGeneratorGUI extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			URL url = getClass().getResource("MainInterface.fxml");
+			URL url = getClass().getResource("WeaponNameGeneratorInterface.fxml");
 			
 			GridPane root = (GridPane)FXMLLoader.load(url);
 			Scene scene = new Scene(root);

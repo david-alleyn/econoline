@@ -26,7 +26,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class MainInterfaceController implements Initializable{
+public class WeaponNameGeneratorInterfaceController implements Initializable{
 	
 	WeaponNameGenerator nameGenerator = null;
 	
