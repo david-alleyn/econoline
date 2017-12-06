@@ -44,6 +44,12 @@ public class WeaponNameGenerator {
 			weaponDatabaseBufferedReader.readLine(); // skip the header line
 		} catch (IOException e) {
 			e.printStackTrace();
+			try {
+				weaponDatabaseBufferedReader.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			return false;
 		}
 
@@ -84,8 +90,8 @@ public class WeaponNameGenerator {
 				if (!rowCells[3].isEmpty()) {
 					flavors.add(rowCells[3].trim());
 				}
-
 			}
+			weaponDatabaseBufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return false;
@@ -191,6 +197,37 @@ public class WeaponNameGenerator {
 					}
 				}
 			}
+		}
+		return nameList;
+	}
+	
+	// $modifier/enchantment $type
+	
+	public List<String> generateModifierEnchantmentType(List<Integer> weaponClassesIndices, List<Integer> modifiersEnchantmentsIndices){
+		List<String> nameList = new ArrayList<String>();
+
+		for (Integer modifierEnchantmentIndex : modifiersEnchantmentsIndices) {
+			for (Integer weaponClassIndex : weaponClassesIndices) {
+
+				for (String weaponSynonym : weaponClasses.get(weaponClassIndex)) {
+					nameList.add(modifiersOrEnchantments.get(modifierEnchantmentIndex) + " " + weaponSynonym);
+				}
+			}
+		}
+		return nameList;
+	}
+	
+	public List<String> generateTypeOfFlavor(List<Integer> weaponClassesIndices, List<Integer> flavorIndices){
+		List<String> nameList = new ArrayList<String>();
+
+		for (Integer flavorIndex : flavorIndices) {
+				for (Integer weaponClassIndex : weaponClassesIndices) {
+
+					for (String weaponSynonym : weaponClasses.get(weaponClassIndex)) {
+						nameList.add(
+								weaponSynonym + " of " + flavors.get(flavorIndex));
+					}
+				}
 		}
 		return nameList;
 	}

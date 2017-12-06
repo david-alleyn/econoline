@@ -17,9 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
@@ -112,9 +110,14 @@ public class WeaponNameGeneratorInterfaceController implements Initializable{
 			break;
 		case 4:
 			outputList = nameGenerator.generateModifierEnchantmentMaterialType(weaponClassIndices, materialIndices, modifiersEnchantmentsIndices);
+			break;
+		case 5:
+			outputList = nameGenerator.generateModifierEnchantmentType(weaponClassIndices, modifiersEnchantmentsIndices);
+			break;
+		case 6:
+			outputList = nameGenerator.generateTypeOfFlavor(weaponClassIndices, flavorIndices);
+			
 		}
-		
-		Collections.shuffle(outputList);
 		
 		if(randomizeCheckbox.isSelected()) {
 			Collections.shuffle(outputList);
@@ -191,7 +194,9 @@ public class WeaponNameGeneratorInterfaceController implements Initializable{
 				"Flavor Material Type", 
 				"Flavor Material Type OF Modifier", 
 				"Material Type OF Modifier", 
-				"Modifier Material Type"));
+				"Modifier Material Type",
+				"Modifier Type",
+				"Type OF Flavor"));
 		formatPicker.getSelectionModel().select(0);
 		
 		//Output limit spinner
@@ -200,5 +205,7 @@ public class WeaponNameGeneratorInterfaceController implements Initializable{
 		
 		
 		randomizeCheckbox.setSelected(true);
+		
+		
 	}
 }
